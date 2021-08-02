@@ -33,20 +33,15 @@
     {% endblock %}
 </head>
 <body>
-{% include 'header/header.html.twig' %}
+
+{% block header %}
+{% endblock %}
 
 {% block body %}
-
-
 {% endblock %}
-{{ encore_entry_script_tags('globalScripts') }}
-{% include 'footer/footer.html.twig' %}
 
-{% set globalString = '' %}
-{% set string_two = 'On en a ' %}
-{% set string_one = 'Gros!' %}
-{% set globalString =  string_one ~ string_two %}
-
+{% block footer %}
+{% endblock %}
 
 </body>
 </html>

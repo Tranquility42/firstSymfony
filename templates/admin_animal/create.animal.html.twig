@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Create Animal{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {#    {{ form_row(form.type) }}#}
+    <div class="div-type">
+        {{ form_widget(form.type, {'attr': {'class': 'type-widget-class'}}) }}
+        {{ form_label(form.type) }}
+    </div>
+
+
+    <div class="div-nickName">
+        {{ form_row(form.nickName) }}
+    </div>
+
+
+    {{ form_row(form.age) }}
+    {{ form_row(form.owner) }}
+    {{ form_end(form) }}
+{% endblock %}

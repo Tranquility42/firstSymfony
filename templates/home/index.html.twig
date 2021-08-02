@@ -3,5 +3,25 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
+    {{ "<h3> Exo 1 </h3>" }}
+    {{ "la string 'jbnjmkjbdjplj' contient : " }}
+    {{ "jbnjmkjbdjplj" | get_letter_count() }}
+    {{ " 'j' " }}
+    {{ "<br> <br>" }}
+    {{ "<h3> Exo 2  </h3>" }}
+    {{ " il y a  : " }}
+    {{ get_animals_count() }}
+    {{ " animaux" }}
+    {{ "<br> <br>" }}
+
+
+    {{ "<h3> Exo 3  </h3>" }}
+    {{ 'youss me prend pour un voleur' | first_letter_color() | raw }}
+
+
+    {% set myAnimals = get_animal_entities() %}
+    {% dump(myAnimals) %}
+
+{#    {{ generate_simple_html() | raw }}#}
 
 {% endblock %}

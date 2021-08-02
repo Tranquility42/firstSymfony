@@ -36,7 +36,6 @@ class TrainingRepositoryController extends AbstractController
 
 
 
-
     /**
      * @Route("/training/repository", name="training_repository")
      */
@@ -79,8 +78,6 @@ class TrainingRepositoryController extends AbstractController
     public function updateAnimal(string $id)
     {
         $animalEntity = $this->animalRepository->find($id);
-        dump($animalEntity);
-
         $animalEntity->setNickName('Paul');
         $this->em->persist($animalEntity);
         $this->em->flush();

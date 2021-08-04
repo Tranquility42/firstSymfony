@@ -1,0 +1,24 @@
+
+
+<section class="container mt-5">
+<div class="row d-flex justify-content-evenly ">
+{% for animal in pagination %}
+    <div class="col-lg-4">
+        <div class="card m-5">
+            <img
+                    src="https://mdbootstrap.com/img/new/standard/nature/184.jpg"
+                    class="card-img-top"
+                    alt="..."
+            />
+            <div class="card-body">
+                <h5 class="card-title text-center">{{ animal.nickName }}</h5>
+                <p class="card-text">
+                    {{ animal.type}}
+                </p>
+                <a href="#!" class="btn btn-primary">Détails</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+</section>

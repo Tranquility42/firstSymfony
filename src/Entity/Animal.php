@@ -28,7 +28,7 @@ class Animal
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Owner::class, inversedBy="animals")
+     * @ORM\ManyToOne(targetEntity=Owner::class, inversedBy="animals", cascade={"persist"})
      */
     private $owner;
 
@@ -72,4 +72,6 @@ class Animal
 
         return $this;
     }
+
+
 }

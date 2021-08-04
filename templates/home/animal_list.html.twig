@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<section class="container d-flex justify-content-center flex-column align-content-center m-5">
+    <div class="d-flex flex-column">
+    {% for item in pagination %}
+    {{ item.nickName }}
+    {% endfor %}
+    </div>
+<div class="pagination d-flex ">
+    {{ knp_pagination_render(pagination) }}
+</div>
+</section>
+
+
+{% endblock %}

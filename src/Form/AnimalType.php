@@ -40,7 +40,7 @@ class AnimalType extends AbstractType
                 'class' => Owner::class,
                 'choice_label' => 'firstName'
             ])
-        ->add('submit',SubmitType::class);
+            ->add('submit',SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

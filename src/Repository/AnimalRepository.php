@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Animal;
+use App\Entity\Owner;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,37 +15,70 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AnimalRepository extends ServiceEntityRepository
 {
+
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Animal::class);
+
     }
 
-    // /**
-    //  * @return Animal[] Returns an array of Animal objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByTypeAndNickName($type , $nickName)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+        $qb= $this->createQueryBuilder('animal')
+            ->where('animal.type = :dog')
+            ->andWhere('animal.nickName = :rex')
+            ->setParameter('dog',$type)
+            ->setParameter('rex',$nickName)
+            ->orderBy('animal.nickName','ASC')
             ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+            ->getResult();
 
-    /*
-    public function findOneBySomeField($value): ?Animal
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $qb ;
     }
-    */
+
+    public function findByOwnerFirstName($firstName)
+    {
+        $qb = $this->createQueryBuilder('animal')
+            ->innerJoin('animal.owner' , 'owner')
+            ->where('owner.firstName = :name_owner')
+            ->setParameter('name_owner',$firstName)
+            ->getQuery()
+            ->getResult();
+
+        return $qb ;
+    }
+
+    public function getQbAll()
+    {
+        $qb = $this->createQueryBuilder('animal');
+        return $qb ;
+    }
+
+    public function getAnimalWithNoOwner()
+    {
+        $qb = $this->createQueryBuilder('a')
+         ->where('a.owner IS NULL')
+            ->getQuery()
+            ->getResult();
+
+        return $qb ;
+    }
+
+    public function animalsByOwner(Owner $ownerEntity)
+    {
+
+        $qb = $this->createQueryBuilder('a')
+            -> innerJoin('a.owner' , 'o')
+            ->where('o.id = :id')
+            ->setParameter('id', $ownerEntity->getId())
+            ->getQuery()
+            ->getResult();
+
+        return $qb ;
+
+    }
+
+
+
 }
